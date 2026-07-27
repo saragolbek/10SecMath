@@ -8,10 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
-    <script src="index.js"></script>
   </head>
 
-  <script src="index.js"></script>
   <body>
     <main class="container">
       <div class="row">
@@ -63,7 +61,7 @@
             aria-live="assertive"
             aria-labelledby="game-over-heading"
           >
-            <h2>Time’s up!</h2>
+            <h2 id="game-over-heading">Time’s up!</h2>
             <p>Final score: <span id="final-score" aria-live="polite">0</span></p>
             <button id="restart-button" type="button">Play Again</button>
           </section>
@@ -95,5 +93,6 @@
         </div>
       </div>
     </main>
+    <script src="index.js"></script>
   </body>
 </html>
