@@ -40,17 +40,18 @@ $(document).ready(function() {
     }
   };
 
-  const randomNumberGenerator = function (size) {
-    return Math.ceil(Math.random() * size);
+  const randomNumberGenerator = function (maximum) {
+    return Math.floor(Math.random() * (maximum + 1));
   };
 
   const questionGenerator = function () {
     const question = {};
-    const num1 = randomNumberGenerator(10);
-    const num2 = randomNumberGenerator($(range).val());
+    const selectedRange = Number($('#range').val());
+    const num1 = randomNumberGenerator(selectedRange);
+    const num2 = randomNumberGenerator(selectedRange);
 
     question.answer = num1 + num2;
-    question.equation = String(num1) + " + " + String(num2);
+    question.equation = `${num1} + ${num2}`;
 
     return question;
   };
@@ -74,7 +75,8 @@ $(document).ready(function() {
   };
 
   $(document).on('input', '#range', function () {
-    $('#rangeValue').html($(this).val());
+    $('#rangeValue').text($(this).val());
+    renderNewQuestion();
   })
 
   $('#user-input').on('keyup', function () {
