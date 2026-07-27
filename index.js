@@ -3,7 +3,7 @@ $(document).ready(function() {
   let interval;
   let timeLeft = 10;
   let score = 0;
-  let highScore = 0;
+  let highScore = Number(localStorage.getItem("highScore")) || 0;
 
   const updateTimeLeft = function (amount) {
     timeLeft += amount;
@@ -17,10 +17,9 @@ $(document).ready(function() {
 
   const updateHighScore = function () {
     highScore = score;
-    $('#highScore').text(highScore);
-  }
-
- 
+    localStorage.setItem("highScore", String(highScore));
+    $("#highScore").text(highScore);
+  };
 
   const startGame = function () {
     if (!interval) {
@@ -69,7 +68,7 @@ $(document).ready(function() {
       updateScore(1);
 
       if (score > highScore) {
-        updateHighScore(score);
+        updateHighScore();
       }
     }
   };
@@ -84,5 +83,6 @@ $(document).ready(function() {
     checkAnswer(Number($(this).val()), currentQuestion.answer);
   });
 
+  $("#highScore").text(highScore);
   renderNewQuestion();
 });
