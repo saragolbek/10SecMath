@@ -16,7 +16,7 @@ body {
   background-color: rgba(163, 39, 39, 0.27);
 }
 
-.timer, .rangeInput {
+.timer, .timer-label, .rangeInput {
   display: inline-block;
   margin: 0 auto;
 }
@@ -29,4 +29,22 @@ body {
 
 .rangeInput {
   margin-top: 20px;
+}
+
+#game-over {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+#game-over h3 {
+  margin-top: 0;
+  color: #dc3545;
+}
+
+#restart-button {
+  margin-top: 10px;
 }
