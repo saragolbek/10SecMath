@@ -21,22 +21,38 @@ $(document).ready(function() {
     $("#highScore").text(highScore);
   };
 
-  const startGame = function () {
-    if (!interval) {
-      if (timeLeft === 0) {
-        updateTimeLeft(10);
-        updateScore(-score);
-      }
+  const endGame = function () {
+    clearInterval(interval);
+    interval = undefined;
 
+    $("#final-score").text(score);
+    $("#game-over").prop("hidden", false);
+    $("#user-input").prop("disabled", true);
+  };
+
+  const startGame = function () {
+    if (!interval && timeLeft > 0) {
       interval = setInterval(function () {
         updateTimeLeft(-1);
 
         if (timeLeft === 0) {
-          clearInterval(interval);
-          interval = undefined;
+          endGame();
         }
       }, 1000);
     }
+  };
+
+  const restartGame = function () {
+    timeLeft = 10;
+    score = 0;
+
+    $("#time-left").text(timeLeft);
+    $("#score").text(score);
+    $("#user-input").val("").prop("disabled", false);
+    $("#game-over").prop("hidden", true);
+
+    renderNewQuestion();
+    $("#user-input").trigger("focus");
   };
 
   const randomNumberGenerator = function (maximum) {
@@ -81,6 +97,10 @@ $(document).ready(function() {
   $('#user-input').on('keyup', function () {
     startGame();
     checkAnswer(Number($(this).val()), currentQuestion.answer);
+  });
+
+  $("#restart-button").on("click", function () {
+    restartGame();
   });
 
   $("#highScore").text(highScore);

@@ -1,4 +1,5 @@
 <html>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -8,23 +9,39 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="index.js"></script>
   </head>
+
   <body>
     <div class="container">
+
       <div class="row">
         <div class="col-xs-12 game">
+
           <h2>10 Sec Math Game</h2>
+
           <div class="timerContainer">
             <h3 id="time-left" class="timer">10</h3>
             <p class="timer">second(s) left</p>
             <h4 class="score">Score: <span id="score"></span></h4>
           </div>
+
           <h4>High Score: <span id="highScore"></span></h4>
+
           <h1 id="equation"></h1>
+
           <input id="user-input" type="number" />
+
+          <div id="game-over" hidden>
+            <p>Time’s up!</p>
+            <p>Final score: <span id="final-score">0</span></p>
+            <button id="restart-button" type="button">Play Again</button>
+          </div>
+
           <div class="row">
+
             <div class="rangeInput">
               <label for="range">Choose a range from 0 to 50:</label><input id="range" type="range" min="0" max="50" value="10"><p id="rangeValue">10</p>
             </div>
+            
           </div>
         </div>
       </div>
