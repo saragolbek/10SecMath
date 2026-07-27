@@ -28,6 +28,8 @@ $(document).ready(function() {
     $("#final-score").text(score);
     $("#game-over").prop("hidden", false);
     $("#user-input").prop("disabled", true);
+
+    $("#restart-button")[0].focus();
   };
 
   const startGame = function () {
@@ -52,7 +54,7 @@ $(document).ready(function() {
     $("#game-over").prop("hidden", true);
 
     renderNewQuestion();
-    $("#user-input").trigger("focus");
+    $("#user-input")[0].focus();
   };
 
   const randomNumberGenerator = function (maximum) {

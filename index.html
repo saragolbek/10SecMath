@@ -13,58 +13,87 @@
 
   <script src="index.js"></script>
   <body>
-    <div class="container">
-
+    <main class="container">
       <div class="row">
         <div class="col-xs-12 game">
+          <header class="game-header">
+            <h1>10 Sec Math Game</h1>
+          </header>
 
-          <h1>10 Sec Math Game</h1>
+          <section>
+            <div class="timerContainer">
+              <p id="time-left" class="timer" aria-live="polite">10</p>
+              <p class="timer-label"> seconds remaining</p>
 
-          <div class="timerContainer">
-            <p id="time-left" class="timer">
-              10
+              <p class="score">
+                Score: 
+                <span id="score" aria-live="polite">0</span>
+              </p>
+            </div>
+           
+            <p class="high-score">
+              High Score: 
+              <span id="highScore" aria-live="polite">0</span>
             </p>
-            <p class="timer-label">
-              second(s) left
-            </p>
-            <p class="score">
-              Score: 
-              <span id="score">0</span>
-            </p>
-          </div>
+          </section> 
 
-          <p class="high-score">
-            High Score: 
-            <span id="highScore">0</span>
-          </p>
+          <section class="game-question" aria-labelledby="question-heading">
+            <h2 id="question-heading" class="sr-only">Current math problem</h2>
 
-          <p id="equation"></p>
+            <p
+              id="equation"
+              class="equation"
+              aria-live="polite"
+            ></p>
 
-          <label for="user-input" class="sr-only">Your Answer</label>
-          <input
-            id="user-input"
-            type="number"
-            inputmode="numeric"
-            autocomplete="off"
-            placeholder="Enter your answer"
-          />
+            <label for="user-input" class="sr-only">Your Answer</label>
+            <input
+              id="user-input"
+              type="number"
+              inputmode="numeric"
+              autocomplete="off"
+              placeholder="Enter your answer"
+            />
+          </section>
 
-          <div id="game-over" hidden>
+          <section
+            id="game-over"
+            class="game-over"
+            hidden
+            aria-live="assertive"
+            aria-labelledby="game-over-heading"
+          >
             <h2>Time’s up!</h2>
-            <p>Final score: <span id="final-score">0</span></p>
+            <p>Final score: <span id="final-score" aria-live="polite">0</span></p>
             <button id="restart-button" type="button">Play Again</button>
-          </div>
+          </section>
 
-          <div class="row">
+          <section class="difficulty-settings" aria-labelledby="difficulty-heading">
+            <h2 id="difficulty-heading">Difficulty</h2>
 
             <div class="rangeInput">
-              <label for="range">Choose a range from 0 to 50:</label>
-              <input id="range" type="range" min="0" max="50" value="10"><p id="rangeValue">10</p>
+              <label for="range">Maximum Number:</label>
+
+              <input 
+              id="range" 
+              type="range" 
+              min="0" max="50" 
+              value="10" 
+              aria-describedby="range-description"
+              />
+
+              <p>
+                Selected maximum:
+                <span id="rangeValue">10</span>
+              </p>
+
+              <p id="range-description">
+                Adjust the largest number used in the math problems.
+              </p>
             </div>
-            
-          </div>
+          </section>
         </div>
       </div>
-    </div>
+    </main>
   </body>
 </html>
