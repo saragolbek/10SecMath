@@ -17,7 +17,7 @@ body {
       rgba(26, 17, 35, 0.68),
       rgba(26, 17, 35, 0.82)
     ),
-    url("./backgroundImage.jpg") center / cover fixed;
+    url("images/backgroundImage.jpg") center / cover fixed;
   color: #2d2433;
   font-family:
     -apple-system,

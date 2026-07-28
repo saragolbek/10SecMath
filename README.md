@@ -2,9 +2,13 @@
 
 A fast-paced browser game where players solve addition problems before the timer reaches zero. Each correct answer increases the score and adds one second to the clock.
 
+## Preview
+
+![10 Sec Math Game](images/10secmath-preview.png)
+
 ## Live Demo
 
-[Play the game](Live-Demo-Placeholder)
+[Play the game](https://saragolbek.github.io/10SecMath/)
 
 ## Features
 
