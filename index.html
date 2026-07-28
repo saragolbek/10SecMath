@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -6,28 +8,97 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
-    <script src="index.js"></script>
   </head>
+
   <body>
-    <div class="container">
+    <main class="container">
       <div class="row">
         <div class="col-xs-12 game">
-          <h2>10 Sec Math Game</h2>
-          <div class="timerContainer">
-            <h3 id="time-left" class="timer">10</h3>
-            <p class="timer">second(s) left</p>
-            <h4 class="score">Score: <span id="score"></span></h4>
-          </div>
-          <h4>High Score: <span id="highScore"></span></h4>
-          <h1 id="equation"></h1>
-          <input id="user-input" type="number" />
-          <div class="row">
-            <div class="rangeInput">
-              <label for="range">Choose a range from 0 to 50:</label><input id="range" type="range" min="0" max="50" value="10"><p id="rangeValue">10</p>
+
+          <!-- Game Header -->
+          <header class="game-header">
+            <h1>10 Sec Math Game</h1>
+          </header>
+
+          <!-- Timer and Score -->
+          <section>
+            <div class="timerContainer">
+              <p id="time-left" class="timer" aria-live="polite">10</p>
+              <p class="timer-label"> seconds remaining</p>
+
+              <p class="score">
+                Score: 
+                <span id="score" aria-live="polite">0</span>
+              </p>
             </div>
-          </div>
+           
+            <p class="high-score">
+              High Score: 
+              <span id="highScore" aria-live="polite">0</span>
+            </p>
+          </section> 
+
+          <!-- Current Math Question -->
+          <section class="game-question" aria-labelledby="question-heading">
+            <h2 id="question-heading" class="sr-only">Current math problem</h2>
+
+            <p
+              id="equation"
+              class="equation"
+              aria-live="polite"
+            ></p>
+
+            <label for="user-input" class="sr-only">Your Answer</label>
+            <input
+              id="user-input"
+              type="number"
+              inputmode="numeric"
+              autocomplete="off"
+              placeholder="Enter your answer"
+            />
+          </section>
+
+          <!-- Game Over Message -->
+          <section
+            id="game-over"
+            class="game-over"
+            hidden
+            aria-live="assertive"
+            aria-labelledby="game-over-heading"
+          >
+            <h2 id="game-over-heading">Time’s up!</h2>
+            <p>Final score: <span id="final-score" aria-live="polite">0</span></p>
+            <button id="restart-button" type="button">Play Again</button>
+          </section>
+
+          <!-- Difficulty Settings -->
+          <section class="difficulty-settings" aria-labelledby="difficulty-heading">
+            <h2 id="difficulty-heading">Difficulty</h2>
+
+            <div class="rangeInput">
+              <label for="range">Maximum Number:</label>
+
+              <input 
+              id="range" 
+              type="range" 
+              min="0" max="50" 
+              value="10" 
+              aria-describedby="range-description"
+              />
+
+              <p>
+                Selected maximum:
+                <span id="rangeValue">10</span>
+              </p>
+
+              <p id="range-description">
+                Adjust the largest number used in the math problems.
+              </p>
+            </div>
+          </section>
         </div>
       </div>
-    </div>
+    </main>
+    <script src="index.js"></script>
   </body>
 </html>
