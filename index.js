@@ -1,9 +1,14 @@
 $(document).ready(function() {
+
+// Game State
+
   let currentQuestion;
   let interval;
   let timeLeft = 10;
   let score = 0;
   let highScore = Number(localStorage.getItem("highScore")) || 0;
+
+  // Cached DOM Elements
 
   const $timeLeft = $("#time-left");
   const $score = $("#score");
@@ -15,6 +20,8 @@ $(document).ready(function() {
   const $range = $("#range");
   const $rangeValue = $("#rangeValue");
   const $equation = $("#equation");
+
+  // Score and Timer Updates
 
   const updateTimeLeft = (amount) => {
     timeLeft += amount;
@@ -28,9 +35,13 @@ $(document).ready(function() {
 
   const updateHighScore = () => {
     highScore = score;
+
+    // Save the high score so it persists after the browser is closed.
     localStorage.setItem("highScore", String(highScore));
     $highScore.text(highScore);
   };
+
+  // Game Controls
 
   const endGame = () => {
     clearInterval(interval);
@@ -39,6 +50,8 @@ $(document).ready(function() {
     $finalScore.text(score);
     $gameOver.prop("hidden", false);
     $userInput.prop("disabled", true);
+
+    // Move focus to the next available action for keyboard users.
     $restartButton[0].focus();
   };
 
@@ -65,8 +78,12 @@ $(document).ready(function() {
     $gameOver.prop("hidden", true);
 
     renderNewQuestion();
+
+    // Return focus to the answer field so the player can resume immediately.
     $userInput[0].focus();
   };
+
+  // Question Generation
 
   const randomNumberGenerator = (maximum) => {
     return Math.floor(Math.random() * (maximum + 1));
@@ -103,6 +120,8 @@ $(document).ready(function() {
     }
   };
 
+  // Event Listeners
+
   $range.on("input", function () {
     $rangeValue.text($(this).val());
 
@@ -114,6 +133,7 @@ $(document).ready(function() {
   $userInput.on("input", function () {
     const inputValue = $(this).val();
 
+    // Prevent an empty field from being converted to the number 0.
     if (inputValue === "") {
       return;
     }
@@ -123,6 +143,8 @@ $(document).ready(function() {
   });
 
   $restartButton.on("click", restartGame);
+
+  // Initialize Game
 
   $highScore.text(highScore);
   renderNewQuestion();

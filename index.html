@@ -14,10 +14,13 @@
     <main class="container">
       <div class="row">
         <div class="col-xs-12 game">
+
+          <!-- Game Header -->
           <header class="game-header">
             <h1>10 Sec Math Game</h1>
           </header>
 
+          <!-- Timer and Score -->
           <section>
             <div class="timerContainer">
               <p id="time-left" class="timer" aria-live="polite">10</p>
@@ -35,6 +38,7 @@
             </p>
           </section> 
 
+          <!-- Current Math Question -->
           <section class="game-question" aria-labelledby="question-heading">
             <h2 id="question-heading" class="sr-only">Current math problem</h2>
 
@@ -54,6 +58,7 @@
             />
           </section>
 
+          <!-- Game Over Message -->
           <section
             id="game-over"
             class="game-over"
@@ -66,6 +71,7 @@
             <button id="restart-button" type="button">Play Again</button>
           </section>
 
+          <!-- Difficulty Settings -->
           <section class="difficulty-settings" aria-labelledby="difficulty-heading">
             <h2 id="difficulty-heading">Difficulty</h2>
 
